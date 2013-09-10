@@ -8,13 +8,19 @@
  * Maximum size of the Vector.
  */
 #define MAX_SIZE 128
+#define STARTING_SIZE 8
+#define INCREMENT_SIZE 8
+#define INCREMENT_THRESHOLD 0.75
+#define DECREMENT_SIZE 8
+#define DECREMENT_THRESHOLD 0.50
 
 /*
  * Vector struct.
  */
 typedef struct Vector {
 	int size; /**< current size of the Vector. */
-	char *elements[MAX_SIZE]; /**< the elements of the Vector. */
+	int total; /**< total size of the Vector. */
+	char **elements; /**< the elements of the Vector. */
 } Vector;
 
 /**
@@ -39,6 +45,20 @@ bool is_empty(const Vector *v);
  * @return True if the Vector is full.
  */
 bool is_full(const Vector *v);
+
+/**
+ * Increases the maximum size of the vector.
+ *
+ * @param v a Vector pointer.
+ */
+void expand(Vector *v);
+
+/**
+ * Decreases the maximum size of the vector.
+ *
+ * @param v a Vector pointer.
+ */
+void shrink(Vector *v);
 
 /**
  * Adds a new element to the Vector.
