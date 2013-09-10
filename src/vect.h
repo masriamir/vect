@@ -4,14 +4,22 @@
 
 #include <stdbool.h>
 
-/**
- * Maximum size of the Vector.
- */
+/** Maximum size of the Vector. */
 #define MAX_SIZE 128
+
+ /** Starting size of the Vector. */
 #define STARTING_SIZE 8
+
+/** Amount to increase Vector size by. */
 #define INCREMENT_SIZE 8
+
+/** Capacity filled before increasing Vector size. */
 #define INCREMENT_THRESHOLD 0.75
+
+/** Amount to decrease Vector size by. */
 #define DECREMENT_SIZE 8
+
+/** Capacity filled before decreasing Vector size. */
 #define DECREMENT_THRESHOLD 0.50
 
 /*
