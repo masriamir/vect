@@ -14,7 +14,7 @@ $(program_NAME): $(program_OBJS)
 	$(LINK.cc) $(program_OBJS) -o $(program_NAME)
 
 clean:
-	@- $(RM) $(program_NAME)
+	@- $(RM) $(program_NAME).exe
 	@- $(RM) $(program_OBJS)
 
 distclean: clean
