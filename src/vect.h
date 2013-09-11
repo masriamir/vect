@@ -58,20 +58,6 @@ bool is_empty(const Vector *v);
 bool is_full(const Vector *v);
 
 /**
- * Increases the maximum size of the vector.
- *
- * @param v a Vector pointer.
- */
-void expand(Vector *v);
-
-/**
- * Decreases the maximum size of the vector.
- *
- * @param v a Vector pointer.
- */
-void shrink(Vector *v);
-
-/**
  * Adds a new element to the Vector.
  *
  * @param v a Vector pointer.

@@ -8,6 +8,38 @@
 #include "vect.h"
 #include "error.h"
 
+/**
+ * Increases the maximum size of the vector.
+ * By default, Vector size will be expanded if it reaches 75% capacity
+ *
+ * @param v a Vector pointer.
+ */
+static void expand(Vector *v) {
+	if (v->size == v->total * INCREMENT_THRESHOLD && v->total < MAX_SIZE) {
+		char **new_elements = realloc(v->elements, (v->total + INCREMENT_SIZE) * sizeof(char *));
+		check_null(new_elements);
+
+		v->elements = new_elements;
+		v->total += INCREMENT_SIZE;
+	}
+}
+
+/**
+ * Decreases the maximum size of the vector.
+ * By default, Vector size will be reduced if it is only 50% full
+ *
+ * @param v a Vector pointer.
+ */
+static void shrink(Vector *v) {
+	if (v->size == v->total * DECREMENT_THRESHOLD && v->total > STARTING_SIZE) {
+		char **new_elements = realloc(v->elements, (v->total - DECREMENT_SIZE) * sizeof(char *));
+		check_null(new_elements);
+
+		v->elements = new_elements;
+		v->total -= DECREMENT_SIZE;
+	}
+}
+
 Vector *new() {
 	Vector *v = (Vector *) calloc(1, sizeof(Vector));
 	check_null(v);
@@ -26,28 +58,6 @@ bool is_empty(const Vector *v) {
 
 bool is_full(const Vector *v) {
 	return v->size == MAX_SIZE;
-}
-
-/* Vector size will be expanded if it reaches 75% capacity */
-void expand(Vector *v) {
-	if (v->size == v->total * INCREMENT_THRESHOLD && v->total < MAX_SIZE) {
-		char **new_elements = realloc(v->elements, (v->total + INCREMENT_SIZE) * sizeof(char *));
-		check_null(new_elements);
-
-		v->elements = new_elements;
-		v->total += INCREMENT_SIZE;
-	}
-}
-
-/* Vector size will be reduced if it is only 50% full */
-void shrink(Vector *v) {
-	if (v->size == v->total * DECREMENT_THRESHOLD && v->total > STARTING_SIZE) {
-		char **new_elements = realloc(v->elements, (v->total - DECREMENT_SIZE) * sizeof(char *));
-		check_null(new_elements);
-
-		v->elements = new_elements;
-		v->total -= DECREMENT_SIZE;
-	}
 }
 
 void push(Vector *v, const char *data) {
