@@ -91,6 +91,15 @@ char *get(const Vector *v, const int index);
 int find(const Vector *v, const char *data);
 
 /**
+ * Replaces the element at the specified index with the new data.
+ *
+ * @param v a Vector pointer.
+ * @param index the index of the element to replace.
+ * @param data a char pointer to the data.
+ */
+void replace(Vector *v, const int index, const char *data);
+
+/**
  * Clears the contents of the Vector.
  *
  * @param v a Vector pointer.

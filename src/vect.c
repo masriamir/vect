@@ -108,6 +108,21 @@ int find(const Vector *v, const char *data) {
 	return -1;
 }
 
+void replace(Vector *v, const int index, const char *data) {
+	check_null(v);
+	check_null(data);
+	check_index(v->size, index);
+
+	/* allocate memory for new data */
+	char *data_ptr = (char *) calloc(sizeof(data), sizeof(char));
+	check_null(data_ptr);
+	strcpy(data_ptr, data);
+
+	/* free existing memory before assigning new pointer */
+	free(v->elements[index]);
+	v->elements[index] = data_ptr;
+}
+
 void clear(Vector *v) {
 	check_null(v);
 
