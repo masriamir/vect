@@ -85,6 +85,19 @@ char *get(const Vector *v, const int index) {
 	return v->elements[index];
 }
 
+int find(const Vector *v, const char *data) {
+	check_null(v);
+	check_null(data);
+
+	for (int i = 0; i < v->size; ++ i) {
+		if (!strcmp(v->elements[i], data)) {
+			return i;
+		}
+	}
+
+	return -1;
+}
+
 void clear(Vector *v) {
 	check_null(v);
 

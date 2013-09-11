@@ -96,6 +96,15 @@ void pop(Vector *v);
 char *get(const Vector *v, const int index);
 
 /**
+ * Determines if the given data is contained within the Vector.
+ *
+ * @param v a Vector pointer.
+ * @param data a char pointer to the data.
+ * @return The index into the Vector if found, -1 otherwise.
+ */
+int find(const Vector *v, const char *data);
+
+/**
  * Clears the contents of the Vector.
  *
  * @param v a Vector pointer.
