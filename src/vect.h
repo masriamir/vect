@@ -2,6 +2,9 @@
  * vect.h
  */
 
+#ifndef VECT_H
+#define VECT_H
+
 #include <stdbool.h>
 
 /** Maximum size of the Vector. */
@@ -105,3 +108,5 @@ void clear(Vector *v);
  * @param v a Vector pointer.
  */
 void print(const Vector *v);
+
+#endif

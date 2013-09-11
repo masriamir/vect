@@ -2,6 +2,9 @@
  * error.h
  */
 
+#ifndef ERROR_H
+#define ERROR_H
+
 #include <stdbool.h>
 
 /**
@@ -50,3 +53,5 @@ void check_index(const int size, const int index);
  * @param e the error code.
  */
 void error(const error_code e);
+
+#endif
