@@ -108,6 +108,20 @@ int find(const Vector *v, const char *data) {
 	return -1;
 }
 
+int find_n(const Vector *v, const char *data) {
+	check_null(v);
+	check_null(data);
+	int count = 0;
+
+	for (int i = 0; i < v->size; ++ i) {
+		if (!strcmp(v->elements[i], data)) {
+			count ++;;
+		}
+	}
+
+	return count;
+}
+
 void replace(Vector *v, const int index, const char *data) {
 	check_null(v);
 	check_null(data);
