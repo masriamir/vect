@@ -1,23 +1,28 @@
-program_NAME := vect
+NAME := vect
 
-program_SRCS := $(wildcard *.c)
-program_OBJS := ${program_SRCS:.c=.o}
+SRCS := $(wildcard src/*.c)
+OBJS := ${SRCS:.c=.o}
+
+INCS = -I./include
 
 CC = gcc
-CFLAGS += -std=c99 -Wall -g -pedantic
+CFLAGS = -std=c99 -Wall -g -pedantic
 
 .PHONY: all clean distclean
 
-all: $(program_NAME)
+all: $(NAME)
 
-$(program_NAME): $(program_OBJS)
-	$(LINK.cc) $(program_OBJS) -o $(program_NAME)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(INCS) $(OBJS) -o $(NAME)
+
+.c.o:
+	$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 
 clean:
-	@- $(RM) $(program_NAME)
-	@- $(RM) $(program_OBJS)
+	@- $(RM) $(NAME)
+	@- $(RM) $(OBJS)
 
 distclean: clean
 
-depend:
-	makedepend -- $(CFLAGS) -- $(program_SRCS)
+depend: $(SRCS)
+	makedepend $(INCS) $^
