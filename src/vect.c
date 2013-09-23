@@ -41,9 +41,9 @@ static void shrink(Vector *v) {
 }
 
 Vector *new() {
-	Vector *v = (Vector *) calloc(1, sizeof(Vector));
+	Vector *v = calloc(1, sizeof(Vector));
 	check_null(v);
-	char **elements = (char **) calloc(STARTING_SIZE, sizeof(char *));
+	char **elements = calloc(STARTING_SIZE, sizeof(char *));
 	check_null(elements);
 
 	v->size = 0;
@@ -64,7 +64,7 @@ void push(Vector *v, const char *data) {
 	check_null(v);
 
 	if (!is_full(v)) {
-		char *data_ptr = (char *) calloc(sizeof(data), sizeof(char));
+		char *data_ptr = calloc(sizeof(data), sizeof(char));
 		check_null(data_ptr);
 		strcpy(data_ptr, data);
 
@@ -128,7 +128,7 @@ void replace(Vector *v, const int index, const char *data) {
 	check_index(v->size, index);
 
 	/* allocate memory for new data */
-	char *data_ptr = (char *) calloc(sizeof(data), sizeof(char));
+	char *data_ptr = calloc(sizeof(data), sizeof(char));
 	check_null(data_ptr);
 	strcpy(data_ptr, data);
 
